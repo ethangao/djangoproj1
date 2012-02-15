@@ -2,9 +2,29 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title></title>
+    <title>{% block title %} We Talk {% endblock %}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-responsive.css" />
 </head>
 <body>
-
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">
+                We Talk
+            </a>
+            <ul class="nav">
+                <li class="active">
+                    <a href="/">Home</a>
+                </li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+{% block body %}{% endblock %}
+</div>
 </body>
 </html>

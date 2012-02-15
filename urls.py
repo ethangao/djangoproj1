@@ -3,6 +3,7 @@ from django.conf.urls.defaults import patterns, include, url
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import app1
 
 urlpatterns = patterns('',
@@ -19,3 +20,4 @@ urlpatterns = patterns('',
     url(r'^login$', 'django.contrib.auth.views.login'),
     url(r'^register$', 'app1.views.register'),
 )
+urlpatterns += staticfiles_urlpatterns()
