@@ -19,5 +19,7 @@ urlpatterns = patterns('',
     url(r'^$', 'app1.views.home'),
     url(r'^login$', 'django.contrib.auth.views.login'),
     url(r'^register$', 'app1.views.register'),
+    url(r'^addtopic$', 'app1.views.addtopic'),
+    url(r'^adddiscuss$', 'app1.views.adddiscuss'),
 )
 urlpatterns += staticfiles_urlpatterns()
