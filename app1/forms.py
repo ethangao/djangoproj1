@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from app1 import mongodb
+from djangoproj1.app1 import mongodb
 
 class CreateUserForm(UserCreationForm):
     email = forms.EmailField()
@@ -15,21 +15,23 @@ class CreateUserForm(UserCreationForm):
 
 
 class AddTopic(forms.Form):
-    topicTitle = forms.CharField(max_length=512)
-    topicContent = forms.CharField()
+    topicTitle = forms.CharField(max_length=512, label='Topic Title')
+    topicContent = forms.CharField(label='Topic Content',widget=forms.Textarea)
+    topicTags = forms.CharField(max_length=512, label="Tags")
 
     def save(self, userId):
         topicTitle = self.cleaned_data['topicTitle']
         topicContent = self.cleaned_data['topicContent']
-        mongodb.addTopic(userId, topicTitle, topicContent)
+        topicTags = self.cleaned_data['topicTags']
+        mongodb.addTopic(userId, topicTitle, topicContent, topicTags)
 
 class AddDiscuss(forms.Form):
-    discussContent = forms.CharField()
+    discussContent = forms.CharField(label='Discuss Content', widget=forms.Textarea)
     topicId = forms.CharField(widget=forms.HiddenInput)
 
     def save(self, userId):
         discussContent = self.cleaned_data['discussContent']
         topicId = self.cleaned_data['topicId']
-        mongodb.addDiscuss(userId, discussContent)
+        return mongodb.addDiscuss(userId, topicId, discussContent)
 
 

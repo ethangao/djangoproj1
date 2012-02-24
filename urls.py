@@ -4,7 +4,6 @@ from django.conf.urls.defaults import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-import app1
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,10 +15,11 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'app1.views.home'),
+    url(r'^$', 'djangoproj1.app1.views.home'),
     url(r'^login$', 'django.contrib.auth.views.login'),
-    url(r'^register$', 'app1.views.register'),
-    url(r'^addtopic$', 'app1.views.addtopic'),
-    url(r'^adddiscuss$', 'app1.views.adddiscuss'),
+    url(r'^register$', 'djangoproj1.app1.views.register'),
+    url(r'^addtopic$', 'djangoproj1.app1.views.addtopic'),
+    url(r'^adddiscuss$', 'djangoproj1.app1.views.adddiscuss'),
+    url(r'^topic/(?P<topicId>[0-9a-f]{24})$', 'djangoproj1.app1.views.gettopic'),
 )
 urlpatterns += staticfiles_urlpatterns()

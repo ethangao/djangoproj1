@@ -1,5 +1,5 @@
 {% extends "common.html" %}
-{% block title %}Register to We Talk{% endblock %}
+{% block title %}Add topic|We Talk{% endblock %}
 {% block body %}
 <form action="/addtopic" method="post"> {% csrf_token %}
     {{ form.as_p }}

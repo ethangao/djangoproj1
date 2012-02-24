@@ -1,0 +1,33 @@
+{% extends "common.html" %}
+{% block title %}{{topic.topicTitle}}|We Talk{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+    function adddiscuss() {
+        $.post("/adddiscuss", $('#adddiscussform').serialize(), function(result){
+            $('#id_adddiscuss_discussContent').val('')
+            $('#discusses').append(result);
+        }, "html");
+    }
+</script>
+{% endblock %}
+{% block body %}
+<div class="span10">
+    <div>
+        <h1>{{topic.topicTitle}}</h1>
+        <span>{{topic.topicContent}}</span>
+    </div>
+    <div>
+        {{topic.date}} by {{topic.username}}
+    </div>
+    <div id='discusses'>
+        {% for discuss in discusses%}
+            {% include "discusscell.html" with discuss=discuss %}
+        {% endfor %}
+    </div>
+
+    <form action="javascript:adddiscuss()" method="post" id="adddiscussform"> {% csrf_token %}
+        {{ adddiscussform.as_p }}
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+{% endblock %}

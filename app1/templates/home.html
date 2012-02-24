@@ -1,6 +1,25 @@
 {% extends "common.html" %}
 {% block title %}Welcome to We Talk{% endblock %}
 {% block body %}
-Hello {{ user.username }}
-<a href="/addtopic.html">Add Topic</a>
+<div class="span10">
+    Hello {{ user.username }}
+    <a href="/addtopic" title="Add a topic">Add Topic</a>
+    <div id="topicsinhome">
+        {% for topic in topics%}
+            <div class="section topiccell">
+                <div>
+                    <h2><a title="{{topic.topicContent}}" href="/topic/{{topic.topicId}}">{{topic.topicTitle}}</a></h2>
+                </div>
+                <div>
+                    {% for tag in topic.topicTags %}
+                        <a class="tag" href="/topics/tags/{{tag}}">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                <div class="byline">
+                    {{topic.date}} by <b>{{topic.username}}</b>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

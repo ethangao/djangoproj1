@@ -1,8 +1,8 @@
 import redis
 
-pool = redis.ConnectionPool(host='localhost', port=6379, db=db0)
+pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
 
 def addDiscussToTopicThread(discussId, topicId):
-    redis = redis.StrictRedis(connection_pool=pool)
-    redis.zadd('topic:' + topicId + ':discusses',discussId=0)
+    redisConn = redis.StrictRedis(connection_pool=pool)
+    redisConn.zadd('topic:' + topicId + ':discusses',discussId=0)
 

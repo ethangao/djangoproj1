@@ -1,0 +1,19 @@
+.topiccell{
+    border-bottom:1px dotted #999;
+    padding: 11px 0px;
+}
+
+.byline{
+    float: right;
+}
+
+.tag{
+    float: left;
+    background-color: #efeaf1;
+    border-bottom: 1px solid #e36d8e;
+    border-right: 1px solid #7f9fb6;
+    padding: 3px 4px;
+    white-space: nowrap;
+    font-size: 90%;
+    line-height: 2.4;
+}
