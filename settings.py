@@ -75,6 +75,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     '/workplace/github/djangoproj1/css',
     '/workplace/github/djangoproj1/js',
+    '/workplace/github/djangoproj1/image',
 )
 
 LOGIN_REDIRECT_URL="/"

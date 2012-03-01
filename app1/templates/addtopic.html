@@ -1,8 +1,19 @@
 {% extends "common.html" %}
 {% block title %}Add topic|We Talk{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+    window.onload = function()
+    {
+        CKEDITOR.replace( 'editor1',
+                {
+                    toolbar : 'Basic'
+                });
+    };
+</script>
+{% endblock %}
 {% block body %}
 <form action="/addtopic" method="post"> {% csrf_token %}
-    {{ form.as_p }}
+    <textarea id="editor1" name="editor1"></textarea>
     <input type="submit" value="Submit"/>
 </form>
 {% endblock %}

@@ -14,17 +14,6 @@ class CreateUserForm(UserCreationForm):
         return user
 
 
-class AddTopic(forms.Form):
-    topicTitle = forms.CharField(max_length=512, label='Topic Title')
-    topicContent = forms.CharField(label='Topic Content',widget=forms.Textarea)
-    topicTags = forms.CharField(max_length=512, label="Tags")
-
-    def save(self, userId):
-        topicTitle = self.cleaned_data['topicTitle']
-        topicContent = self.cleaned_data['topicContent']
-        topicTags = self.cleaned_data['topicTags']
-        mongodb.addTopic(userId, topicTitle, topicContent, topicTags)
-
 class AddDiscuss(forms.Form):
     discussContent = forms.CharField(label='Discuss Content', widget=forms.Textarea)
     topicId = forms.CharField(widget=forms.HiddenInput)

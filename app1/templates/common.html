@@ -3,11 +3,12 @@
 <html>
 <head>
     <title>{% block title %} We Talk {% endblock %}</title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-responsive.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}mytalk.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}mytalk.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap.js"> </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}ckeditor.js"></script>
     {% block javascript %}{% endblock %}
 </head>
 <body>
