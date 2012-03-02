@@ -6,7 +6,7 @@
 }
 
 .byline{
-    float:right;
+    float: right;
 }
 
 .tag{
@@ -23,4 +23,21 @@
 .tags {
     float: left;
     margin-top: 5px;
+}
+
+#topic-title {
+    border-bottom: 1px solid #000;
+}
+
+.text-content {
+    padding: 5px;
+}
+
+.dash-separator {
+    border-bottom: 1px dotted #000;
+}
+
+.discuss-group {
+    overflow: hidden;
+    width: 100%;
 }

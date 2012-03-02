@@ -13,13 +13,14 @@
 {% block body %}
 <div class="span10">
     <div>
-        <h1>{{topic.topicTitle}}</h1>
-        <span>{{topic.topicContent|safe}}</span>
+        <div id="topic-title">
+            <h1>{{topic.topicTitle}}</h1>
+        </div>
+        <div class="text-content">
+            <span>{{topic.topicContent|safe}}</span>
+        </div>
     </div>
-    <div>
-        {{topic.date}} by {{topic.username}}
-    </div>
-    <div id='discusses'>
+    <div class='discuss-group'>
         {% for discuss in discusses%}
             {% include "discusscell.html" with discuss=discuss %}
         {% endfor %}
