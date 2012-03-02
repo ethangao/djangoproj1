@@ -1,8 +1,7 @@
 import datetime
 from bson.objectid import ObjectId
 import pymongo
-import redis
-from djangoproj1.app1 import redisdb
+import redisdb
 
 connection = pymongo.Connection('localhost', 27017)
 db = connection.db0

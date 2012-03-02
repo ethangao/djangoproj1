@@ -23,4 +23,13 @@ class AddDiscuss(forms.Form):
         topicId = self.cleaned_data['topicId']
         return mongodb.addDiscuss(userId, topicId, discussContent)
 
+class AddTopic(forms.Form):
+    topicTitle = forms.CharField(max_length=512, widget=forms.TextInput(attrs={'name': 'topicTitle'}))
+    topicContent = forms.CharField(widget=forms.Textarea(attrs={'name': 'editor1', 'id':'editor1'}) )
+    topicTags = forms.CharField(max_length=1024, widget=forms.TextInput(attrs={'name': 'topicTags'}))
 
+    def save(self, userId):
+        topicTitle = self.cleaned_data['topicTitle']
+        topicContent = self.cleaned_data['topicContent']
+        topicTags = self.cleaned_data['topicTags']
+        return mongodb.addTopic(userId, topicTitle, topicContent, topicTags)

@@ -6,14 +6,24 @@
     {
         CKEDITOR.replace( 'editor1',
                 {
-                    toolbar : 'Basic'
+                    toolbar :
+                    [       ['Bold', 'Italic', 'Underline'],
+                            ['NumberedList', 'BulletedList']
+                    ]
                 });
     };
+
+    function submitTopic()
+    {
+        $.post("/addtopic", $('#addtopicform').serialize(), function(result){
+
+        }, "html");
+    }
 </script>
 {% endblock %}
 {% block body %}
-<form action="/addtopic" method="post"> {% csrf_token %}
-    <textarea id="editor1" name="editor1"></textarea>
-    <input type="submit" value="Submit"/>
+<form action="/addtopic" method="post" id="addtopicform"> {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" name='submit'/>
 </form>
 {% endblock %}

@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from app1 import forms
 from djangoproj1.app1.forms import CreateUserForm, AddDiscuss
 from djangoproj1.app1 import mongodb
 
@@ -39,17 +40,16 @@ def register(request):
 
 @login_required(login_url='/login')
 def addtopic(request):
-#    if request.method == 'POST':
-##        form = AddTopic(request.POST)
-##
-##        if form.is_valid():
-##            form.save(request.session[SESSION_KEY])
-##            return HttpResponseRedirect('/')
-#        pass
-#    else:
+    if request.method == 'POST':
+        form = forms.AddTopic(request.POST)
 
+        if form.is_valid():
+            form.save(request.session[SESSION_KEY])
+            return HttpResponseRedirect('/')
+    else:
+        form = forms.AddTopic()
 
-    return render_to_response('addtopic.html', context_instance=RequestContext(request))
+    return render_to_response('addtopic.html', {'form': form}, context_instance=RequestContext(request))
 
 @login_required(login_url='/login')
 def adddiscuss(request):

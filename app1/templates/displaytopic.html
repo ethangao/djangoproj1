@@ -14,7 +14,7 @@
 <div class="span10">
     <div>
         <h1>{{topic.topicTitle}}</h1>
-        <span>{{topic.topicContent}}</span>
+        <span>{{topic.topicContent|safe}}</span>
     </div>
     <div>
         {{topic.date}} by {{topic.username}}
